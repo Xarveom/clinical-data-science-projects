@@ -1,0 +1,94 @@
+
+---
+title: "COVID-19 Data Wrangling Report"
+author: "Christy Joseph"
+output: html_document
+---
+
+## 🧪 Objective
+
+Analyze global COVID-19 cases and deaths using real-world data from Our World in Data.
+
+---
+
+## 📦 Load Required Packages
+
+```{r}
+library(readr)
+library(dplyr)
+library(tidyr)
+library(lubridate)
+```
+
+---
+
+## 📂 Load the Data
+
+```{r}
+covid <- read_csv("D:/R Programming/data/owid-covid-data.csv")
+```
+This dataset has over 429,000 rows and 67 columns, including cases, deaths, dates, locations, and more.
+
+---
+
+## 🔍 Select and Clean Relevant Columns
+
+```{r}
+covid_clean <- covid %>%
+  select(location, continent, date, total_cases, total_deaths) %>%
+  filter(!is.na(continent), !is.na(total_cases))
+```
+
+---
+
+## 📅 Find the Most Recent Date
+
+```{r}
+latest_date <- max(covid_clean$date)
+latest_date
+```
+
+---
+
+## 📊 Summarise Cases and Deaths by Continent (Latest Date)
+
+```{r}
+covid_latest <- covid_clean %>%
+  filter(date == latest_date) %>%
+  group_by(continent) %>%
+  summarise(
+    total_cases = sum(total_cases, na.rm = TRUE),
+    total_deaths = sum(total_deaths, na.rm = TRUE)
+  )
+covid_latest
+```
+
+---
+
+## 🔁 Reshape Data to Long Format (Tidy)
+
+```{r}
+covid_tidy <- covid_latest %>%
+  pivot_longer(cols = c(total_cases, total_deaths),
+               names_to = "metric",
+               values_to = "count")
+covid_tidy
+```
+
+---
+
+## ✏️ Questions Answered
+
+### 1. Which continent had the most total cases?
+
+Asia
+
+### 2. What’s the total number of deaths globally?
+
+```{r}
+sum(covid_latest$total_deaths, na.rm = TRUE)
+```
+
+### 3. Why reshape to long format?
+
+Long format is preferred for plotting grouped metrics and works better with `ggplot2`, `facet_wrap`, and tidyverse tools.
