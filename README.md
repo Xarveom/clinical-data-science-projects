@@ -33,7 +33,7 @@ To investigate patterns in life expectancy, GDP per capita, and population acros
 ---
 
 ## 👨‍💻 Author
-
+**Christy Joseph** 
 MSc Data Science (UK) | Base SAS Certified  
 Clinical data enthusiast exploring analytics, visualization, and reporting using R.
 [LinkedIn](https://www.linkedin.com/in/christy-joseph-b6b0051ba/)
