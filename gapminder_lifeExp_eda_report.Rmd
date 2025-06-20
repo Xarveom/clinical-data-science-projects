@@ -1,0 +1,61 @@
+---
+title: "Gapminder Life Expectancy EDA Report"
+author: "Christy Joseph"
+output: html_document
+---
+
+## ✨ Summary
+
+### 🌍 What continent has the highest life expectancy?
+
+From the analysis, Europe consistently shows the highest average life expectancy across all years.
+
+### 💰 Does more GDP = longer life?
+
+Yes — there's a positive correlation between GDP per capita and life expectancy, particularly in lower-income countries.
+
+### 📈 How has global health improved?
+
+Life expectancy has increased globally from 1952 to 2007, especially in Asia and Latin America.
+
+---
+
+## 📦 Load Required Packages
+
+```{r setup, include=TRUE}
+
+library(gapminder)
+library(ggplot2)
+library(dplyr)
+```
+
+##🔍 Preview the Data
+```{r}
+head(gapminder)
+summary(gapminder)
+```
+
+##📊 Life Expectancy by Continent
+```{r}
+gapminder %>%
+  group_by(continent) %>%
+  summarise(avg_lifeExp = mean(lifeExp))
+```
+
+##📈 Line Plot of Global Life Expectancy
+```{r}
+
+gapminder %>%
+  group_by(year) %>%
+  summarise(mean_lifeExp = mean(lifeExp)) %>%
+  ggplot(aes(x = year, y = mean_lifeExp)) +
+  geom_line(color = "blue")
+```
+
+##🔁 GDP vs Life Expectancy
+```{r}
+
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
+  geom_point() +
+  scale_x_log10()
+```
