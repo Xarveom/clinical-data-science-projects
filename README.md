@@ -32,6 +32,24 @@ To investigate patterns in life expectancy, GDP per capita, and population acros
 
 ---
 
+## 🧪 02: COVID-19 Data Wrangling & Summary
+
+This project analyzes global COVID-19 data from [Our World in Data](https://ourworldindata.org/coronavirus) using `dplyr`, `tidyr`, and `readr` in R.
+
+### 🔍 Key Steps:
+- Loaded the `owid-covid-data.csv` dataset
+- Cleaned the data to select `location`, `continent`, `date`, `total_cases`, and `total_deaths`
+- Filtered to include only valid continent-level records
+- Summarized total cases and deaths by continent for the most recent date
+
+### 📊 Sorting by Total Cases
+To identify the continent with the highest total cases, the following code was used:
+
+```r
+covid_latest %>%
+  arrange(desc(total_cases))
+
+
 ## 👨‍💻 Author
 **Christy Joseph** 
 MSc Data Science (UK) | Base SAS Certified  
