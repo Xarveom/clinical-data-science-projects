@@ -42,13 +42,6 @@ This project analyzes global COVID-19 data from [Our World in Data](https://ourw
 - Filtered to include only valid continent-level records
 - Summarized total cases and deaths by continent for the most recent date
 
-### 📊 Sorting by Total Cases
-To identify the continent with the highest total cases, the following code was used:
-
-```r
-covid_latest %>%
-  arrange(desc(total_cases))
-
 
 ##  03 📄 Project: COVID-19 Testing Data Scraping and Preprocessing
 
