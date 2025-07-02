@@ -50,6 +50,48 @@ covid_latest %>%
   arrange(desc(total_cases))
 
 
+##  03 📄 Project: COVID-19 Testing Data Scraping and Preprocessing
+
+**Notebook:** `final_jupyter_covid19.ipynb`
+
+This R-based project demonstrates how to extract COVID-19 testing data by country from Wikipedia using web scraping techniques, and perform basic data preprocessing for analysis.
+
+### 📌 Key Tasks Performed
+
+- Sending an HTTP GET request using the `httr` package
+- Reading HTML content with `rvest`
+- Extracting the second table from the Wikipedia page on COVID-19 testing by country
+- Converting the HTML table into an R data frame
+- Cleaning the data (e.g., removing rows like “World” and the last summary row)
+- Providing a summary of the cleaned dataset
+
+### 🌐 Data Source
+
+- Wikipedia: [`COVID-19 testing by country`](https://en.wikipedia.org/w/index.php?title=Template:COVID-19_testing_by_country)
+
+### 🛠️ Libraries Used
+
+- `httr` – for making HTTP requests
+- `rvest` – for parsing HTML content
+
+
+### 🛠️ Tools & Libraries Used
+
+- R programming language
+- `httr` — for making HTTP requests
+- `rvest` — for parsing and scraping HTML tables
+
+
+### 🧪 Tasks Covered in Notebook
+
+1. Send an HTTP GET request to fetch the Wikipedia page
+2. Parse and extract the main `<table>` containing testing data
+3. Convert the HTML table into a usable R data frame
+4. Perform data wrangling and cleanup
+5. Rank countries by total tests, tests per capita, or positivity rate
+
+
+
 ## 👨‍💻 Author
 **Christy Joseph** 
 MSc Data Science (UK) | Base SAS Certified  
